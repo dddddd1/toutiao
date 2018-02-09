@@ -29,19 +29,22 @@ import jsonpAdapter from 'axios-jsonp'
 export default {
     data () {
         return {
-          id: this.$route.params,
-          nowTime:Math.round(new Date() / 1000),
+          id: this.$route.params,   //nav的type
+          nowTime:Math.round(new Date() / 1000),     //时间戳
           listCon :{}
         };
     },
     created(){
-       axios({
-              url: 'https://m.toutiao.com/list/?tag='+this.id.id+'&ac=wap&count=20&format=json_raw&as=A125A8CEDCF8987&cp=58EC18F948F79E1&min_behot_time='+this.nowTime,
-              adapter: jsonpAdapter
-          }).then((res) => {
-              this.listCon =res.data.data
-              console.log(this.listCon)
-          });
+      axios({
+            url: 'https://m.toutiao.com/list/?tag='+this.id.id+'&ac=wap&count=20&format=json_raw&as=A125A8CEDCF8987&cp=58EC18F948F79E1&min_behot_time='+this.nowTime,
+            adapter: jsonpAdapter
+        }).then((res) => {
+            this.listCon =res.data.data
+            console.log(this.listCon)
+        });
+    },
+    methods :{
+      
     }
 }
 
