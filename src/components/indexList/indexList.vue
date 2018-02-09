@@ -35,16 +35,27 @@ export default {
         };
     },
     created(){
-      axios({
-            url: 'https://m.toutiao.com/list/?tag='+this.id.id+'&ac=wap&count=20&format=json_raw&as=A125A8CEDCF8987&cp=58EC18F948F79E1&min_behot_time='+this.nowTime,
-            adapter: jsonpAdapter
-        }).then((res) => {
-            this.listCon =res.data.data
-            console.log(this.listCon)
-        });
+      this.fetchData();
+    },
+    watch: {
+      // 如果路由有变化，会再次执行该方法
+      // '$route': 'fetchData'
+      '$route' (to, from) {
+          // console.log(this.getStatus(this.$route.path))
+          this.fetchData();      //再次调起我要执行的函数
+      }
     },
     methods :{
-      
+      fetchData() {
+          // 使用 axios获取数据
+           axios({
+              url: 'https://m.toutiao.com/list/?tag='+this.id.id+'&ac=wap&count=20&format=json_raw&as=A125A8CEDCF8987&cp=58EC18F948F79E1&min_behot_time='+this.nowTime,
+              adapter: jsonpAdapter
+          }).then((res) => {
+              this.listCon =res.data.data
+              console.log(this.listCon)
+          });
+        }
     }
 }
 

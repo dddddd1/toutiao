@@ -17,5 +17,6 @@ export default new Router({
       component: indexList ,
       props: true
     }
-  ]
+  ],
+  
 })
