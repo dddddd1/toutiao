@@ -2,14 +2,22 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
+import VueLazyload from 'vue-lazyload'
 
-import MintUI from 'mint-ui'
-import 'mint-ui/lib/style.css'
+
 
 import router from './router'
-
 Vue.config.productionTip = false
-Vue.use(MintUI)
+
+
+//延迟加载引用
+Vue.use(VueLazyload, {
+  preLoad: 1.3,
+  error: './static/images/imgerror.jpg',
+  loading: './static/images/imgloading.jpg',
+  attempt: 1
+})
+
 
 /* eslint-disable no-new */
 new Vue({
