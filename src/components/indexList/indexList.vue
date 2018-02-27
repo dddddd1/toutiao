@@ -1,5 +1,7 @@
 <template>
   <div class="list">
+      <Header></Header>  
+      <header1></header1>
       <ul>
           <router-link v-for="(item, index) in listCon" 
             :key="index" 
@@ -29,6 +31,9 @@
 <script>
 import axios from 'axios'
 import jsonpAdapter from 'axios-jsonp'
+
+import Header from '@/components/Header/Header'
+import header1 from '@/components/header1/header1'
 export default {
     data () {
         return {
@@ -39,6 +44,10 @@ export default {
     },
     created(){
       this.fetchData();
+    },
+    components:{
+      Header,
+      header1,
     },
     watch: {
       // 如果路由有变化，会再次执行该方法
@@ -56,6 +65,7 @@ export default {
               adapter: jsonpAdapter
           }).then((res) => {
               this.listCon =res.data.data
+              console.log(this.listCon)
           });
         }
     }
@@ -67,7 +77,7 @@ export default {
 .list
   position relative
   top 68px
-  z-index -1
+  z-index 0
   ul
     li
      margin 0px 10px
