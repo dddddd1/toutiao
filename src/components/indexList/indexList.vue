@@ -1,30 +1,36 @@
 <template>
   <div class="list">
-      <Header></Header>  
-      <header1></header1>
-      <ul>
-          <router-link v-for="(item, index) in listCon" 
-            :key="index" 
-            :to="{path:'/content/' + item.item_id}"
-            tag="li"
-            class="news_box"
-            v-if="item.title"
-            >
-              <div :class="['item_detail',item.image_url ? 'desc' :'' ]">
-                <div class="news_title" v-html="item.title"></div>
-                <div class="news_imgs" v-if="item.has_image ? item.image_list.length : false">
-                  <img v-for="(img, index) in item.image_list" v-lazy="img.url" style="width: 30%" :key="index" v-if="index < 3">
+    <Header></Header>  
+    <header1></header1>
+    <scroller 
+        style="padding-top:68px"
+        :on-refresh="refresh"
+        :on-infinite="infinite"
+        >
+        <ul>
+            <router-link v-for="(item, index) in listCon" 
+              :key="index" 
+              :to=" {path:'/content/' + item.item_id} "
+              tag="li"
+              class="news_box"
+              v-if="item.title"
+              >
+                <div :class="['item_detail',item.image_url ? 'desc' :'' ]">
+                  <div class="news_title" v-html="item.title"></div>
+                  <div class="news_imgs" v-if="item.has_image ? item.image_list.length : false">
+                    <img v-for="(img, index) in item.image_list" v-lazy="img.url" style="width: 30%" :key="index" v-if="index < 3">
+                  </div>
+                  <div class="news_info">
+                    <span v-if="item.label" class="stick_label space">{{item.label}}</span>
+                    <span class="media_name">{{item.media_name}}</span>
+                    <span class="comment_count">评论 {{item.comment_count}}</span>
+                    <span class="datetime">{{item.datetime}}</span>
+                  </div>
                 </div>
-                <div class="news_info">
-                  <span v-if="item.label" class="stick_label space">{{item.label}}</span>
-                  <span class="media_name">{{item.media_name}}</span>
-                  <span class="comment_count">评论 {{item.comment_count}}</span>
-                  <span class="datetime">{{item.datetime}}</span>
-                </div>
-              </div>
-              <div v-if="item.image_url" class="list_img_holder"><img v-lazy="item.image_url"></div>
-          </router-link>
-      </ul>
+                <div v-if="item.image_url" class="list_img_holder"><img v-lazy="item.image_url"></div>
+            </router-link>  
+        </ul>
+     </scroller>
   </div>
 </template>
 
@@ -57,6 +63,9 @@ export default {
           this.fetchData();      //再次调起我要执行的函数
       }
     },
+    mounted(){
+      this.fetchData();
+    },
     methods :{
       fetchData() {
           // 使用 axios获取数据
@@ -67,6 +76,12 @@ export default {
               this.listCon =res.data.data
               console.log(this.listCon)
           });
+        },
+        refresh(){
+          
+        },
+        infinite(){
+          
         }
     }
 }
@@ -75,10 +90,10 @@ export default {
 <style lang='stylus' scoped>
 @import "../../common/stylus/index";
 .list
-  position relative
-  top 68px
+  pading-top 68px
   z-index 0
   ul
+    overflow hidden
     li
      margin 0px 10px
      padding 14px 0px

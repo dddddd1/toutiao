@@ -3,9 +3,13 @@
 import Vue from 'vue'
 import App from './App'
 import VueLazyload from 'vue-lazyload'
+import VueScroller from 'vue-scroller'
+
+
 import router from './router'
 Vue.config.productionTip = false
 
+window.Promise = Promise   //兼容ie的Promise报错问题
 
 //延迟加载引用
 Vue.use(VueLazyload, {
@@ -14,6 +18,8 @@ Vue.use(VueLazyload, {
   loading: './static/images/imgloading.jpg',
   attempt: 1
 })
+// 滚动的引用
+Vue.use(VueScroller)
 
 
 /* eslint-disable no-new */

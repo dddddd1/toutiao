@@ -8,7 +8,6 @@
             :to="item.url + '/' +item.type"
             tag="li"
             >{{item.text}}
-             
         </router-link>
       </ul>
   </div>
@@ -44,15 +43,14 @@ export default {
     background: #f4f5f6;
     position: fixed;
     z-index 1
+    top: 40px;
     .top_menu_bar_ul
         width: 100%;
         overflow: hidden;
         overflow-x: auto;
         text-align: center;
-        position: fixed;
         left: 0;
         font-size: 0;
-        top: 40px;
         background: #f4f5f6;
         font-family: \\5FAE\8F6F\96C5\9ED1;
         white-space: nowrap;
