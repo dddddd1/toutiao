@@ -50,6 +50,7 @@ export default {
         padding: 0 10px;
         text-align: center;
         white-space: nowrap;
+        z-index 1
         .mint-header-button
             -webkit-box-flex: .5;
             -ms-flex: .5;

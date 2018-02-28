@@ -43,6 +43,7 @@ export default {
 .top_menu_bar  
     background: #f4f5f6;
     position: fixed;
+    z-index 1
     .top_menu_bar_ul
         width: 100%;
         overflow: hidden;
