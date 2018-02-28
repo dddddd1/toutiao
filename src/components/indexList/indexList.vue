@@ -44,7 +44,7 @@ export default {
     data () {
         return {
           nowTime:Math.round(new Date() / 1000),     //时间戳
-          listCon :{},
+          listCon :[],
           mescroll: null,
         };
     },
