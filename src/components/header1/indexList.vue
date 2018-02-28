@@ -15,19 +15,19 @@
               class="news_box"
               v-if="item.title"
               >
-                <div :class="['item_detail',item.image_url ? 'desc' :'' ]">
-                  <div class="news_title" v-html="item.title"></div>
-                  <div class="news_imgs" v-if="item.has_image ? item.image_list.length : false">
-                    <img v-for="(img, index) in item.image_list" v-lazy="img.url" style="width: 30%" :key="index" v-if="index < 3">
+                <div :class="['item_detail',item[0].image_url ? 'desc' :'' ]">
+                  <div class="news_title" v-html="item[0].title"></div>
+                  <div class="news_imgs" v-if="item[0].has_image ? item[0].image_list.length : false">
+                    <img v-for="(img, index) in item[0].image_list" v-lazy="img.url" style="width: 30%" :key="index" v-if="index < 3">
                   </div>
                   <div class="news_info">
-                    <span v-if="item.label" class="stick_label space">{{item.label}}</span>
-                    <span class="media_name">{{item.media_name}}</span>
-                    <span class="comment_count">评论 {{item.comment_count}}</span>
-                    <span class="datetime">{{item.datetime}}</span>
+                    <span v-if="item.label" class="stick_label space">{{item[0].label}}</span>
+                    <span class="media_name">{{item[0].media_name}}</span>
+                    <span class="comment_count">评论 {{item[0].comment_count}}</span>
+                    <span class="datetime">{{item[0].datetime}}</span>
                   </div>
                 </div>
-                <div v-if="item.image_url" class="list_img_holder"><img v-lazy="item.image_url"></div>
+                <div v-if="item[0].image_url" class="list_img_holder"><img v-lazy="item[0].image_url"></div>
             </router-link>  
         </ul>
      </scroller>
@@ -44,8 +44,7 @@ export default {
     data () {
         return {
           nowTime:Math.round(new Date() / 1000),     //时间戳
-          listCon :{},
-          mescroll: null,
+          listCon :[],
         };
     },
     created(){
@@ -70,8 +69,8 @@ export default {
               url: 'https://m.toutiao.com/list/?tag='+this.$route.params.id+'&ac=wap&count=20&format=json_raw&as=A125A8CEDCF8987&cp=58EC18F948F79E1&min_behot_time='+this.nowTime,
               adapter: jsonpAdapter
           }).then((res) => {
-              this.listCon =res.data.data
-              console.log(this.listCon)
+              this.listCon.push(res.data.data)
+              console.log(this.listCon[0])
           });
         },
         refresh(){
