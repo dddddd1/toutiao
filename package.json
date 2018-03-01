@@ -16,8 +16,6 @@
   "dependencies": {
     "axios": "^0.17.1",
     "axios-jsonp": "^1.0.1",
-    "cube-ui": "^1.4.3",
-    "mint-ui": "^2.2.13",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
     "vue": "^2.5.2",

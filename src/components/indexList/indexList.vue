@@ -6,6 +6,7 @@
         style="padding-top:68px"
         :on-refresh="refresh"
         :on-infinite="infinite"
+        ref="myscroller"
         >
         <ul>
             <router-link v-for="(item, index) in listCon" 
@@ -45,11 +46,8 @@ export default {
         return {
           nowTime:Math.round(new Date() / 1000),     //时间戳
           listCon :[],
-          mescroll: null,
+          listCon2 :[]
         };
-    },
-    created(){
-      this.fetchData();
     },
     components:{
       Header,
@@ -59,27 +57,41 @@ export default {
       // 如果路由有变化，会再次执行该方法
       // '$route': 'fetchData'
       '$route' (to, from) {
-          // console.log(this.getStatus(this.$route.path))
           this.fetchData();      //再次调起我要执行的函数
       }
     },
     methods :{
       fetchData() {
-          // 使用 axios获取数据
-           axios({
+        // 使用 axios获取数据
+          axios({
+            url: 'https://m.toutiao.com/list/?tag='+this.$route.params.id+'&ac=wap&count=20&format=json_raw&as=A125A8CEDCF8987&cp=58EC18F948F79E1&min_behot_time='+this.nowTime,
+            adapter: jsonpAdapter
+        }).then((res) => {
+            this.listCon =res.data.data
+        });
+      },
+      refresh(done){
+        setTimeout(() => {
+          this.fetchData();      //再次调起我要执行的函数
+          done()
+        }, 1500)
+      },
+      infinite(done){
+        setTimeout(() => {
+          console.log('infinite2');
+          axios({
               url: 'https://m.toutiao.com/list/?tag='+this.$route.params.id+'&ac=wap&count=20&format=json_raw&as=A125A8CEDCF8987&cp=58EC18F948F79E1&min_behot_time='+this.nowTime,
               adapter: jsonpAdapter
           }).then((res) => {
-              this.listCon =res.data.data
-              console.log(this.listCon)
+            this.listCon2 =res.data.data
+            this.listCon=this.listCon.concat(this.listCon2)
+            done()
           });
-        },
-        refresh(){
+          // this.$refs.myscroller.resize();
           
-        },
-        infinite(){
-          
-        }
+        }, 1000)
+       
+      }
     }
 }
 
