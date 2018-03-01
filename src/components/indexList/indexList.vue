@@ -1,5 +1,6 @@
 <template>
   <div class="list">
+    
     <Header></Header>  
     <header1></header1>
     <scroller 
@@ -52,6 +53,7 @@ export default {
     components:{
       Header,
       header1,
+      
     },
     watch: {
       // 如果路由有变化，会再次执行该方法

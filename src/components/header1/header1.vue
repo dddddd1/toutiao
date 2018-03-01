@@ -1,5 +1,6 @@
 <template>
   <div class="top_menu_bar ">
+      <v-title>toutiao</v-title>
       <ul class="top_menu_bar_ul">
         <router-link 
             v-for="(item, index) in nav" 
@@ -14,7 +15,7 @@
 </template>
 
 <script>
-
+import VTitle from '@/components/title/title'
 export default {
   data () {
     return {
@@ -33,7 +34,10 @@ export default {
       ],
       id: this.$route.params,
     };
-  }
+  },
+  components: {
+    VTitle
+  },
 
 }
 

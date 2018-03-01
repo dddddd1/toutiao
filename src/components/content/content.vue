@@ -1,5 +1,6 @@
 <template>
   <div>
+    <v-title>{{listCon.title}}</v-title>
     <article v-if="listCon.content"  class="article padding-side">
       <div class="article__header new-style-test-article__header">
         <h1 class="article__title">{{listCon.title}}</h1>
@@ -28,6 +29,7 @@
 <script>
 import axios from 'axios'
 import jsonpAdapter from 'axios-jsonp'
+import VTitle from '@/components/title/title'
 export default {
   data () {
     return {
@@ -38,6 +40,9 @@ export default {
   },
   created(){
     this.fetchData();
+  },
+  components: {
+    VTitle
   },
    computed: {
     // 计算属性的 getter
