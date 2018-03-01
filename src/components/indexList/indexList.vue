@@ -78,7 +78,6 @@ export default {
       },
       infinite(done){
         setTimeout(() => {
-          console.log('infinite2');
           axios({
               url: 'https://m.toutiao.com/list/?tag='+this.$route.params.id+'&ac=wap&count=20&format=json_raw&as=A125A8CEDCF8987&cp=58EC18F948F79E1&min_behot_time='+this.nowTime,
               adapter: jsonpAdapter
