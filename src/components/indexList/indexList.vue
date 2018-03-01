@@ -3,7 +3,7 @@
     <Header></Header>  
     <header1></header1>
     <scroller 
-        style="padding-top:68px"
+        style="padding-top:68px;overflow:visible;"
         :on-refresh="refresh"
         :on-infinite="infinite"
         ref="myscroller"
@@ -84,10 +84,10 @@ export default {
           }).then((res) => {
             this.listCon2 =res.data.data
             this.listCon=this.listCon.concat(this.listCon2)
+            this.$refs.myscroller.resize();
             done()
           });
-          // this.$refs.myscroller.resize();
-          
+          // 
         }, 1000)
        
       }
@@ -98,8 +98,9 @@ export default {
 <style lang='stylus' scoped>
 @import "../../common/stylus/index";
 .list
-  pading-top 68px
+  padding-top 68px
   z-index 0
+  height 100%
   ul
     overflow hidden
     li
@@ -140,11 +141,9 @@ export default {
             margin-right 5px
             vertical-align middle
             margin-top 2px
-        
     .list_img_holder
       width 33%
       float left
       img 
         width:100%
-
 </style>

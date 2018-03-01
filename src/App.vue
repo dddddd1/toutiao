@@ -1,21 +1,19 @@
 <template>
   <div id="app">
-      <!-- <test></test> -->
     <router-view/>
   </div>
 </template>
 
 <script>
-import test from '@/components/test'
 
 export default {
-  name: 'App',
-   components: {
-      test
-    },
+  name: 'App'
 }
 </script>
 
-<style>
-
+<style lang='stylus'>
+html,body
+  height 100%
+  #app
+    height 100%
 </style>
