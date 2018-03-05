@@ -61,9 +61,10 @@ export default {
     },
     methods :{
       fetchData() {
-        // 使用 axios获取数据
+        // 使用 axios获取  文章列表数据
           axios({
             url:'https://m.toutiao.com/i'+this.$route.params.id+'/info/?callback=__jp2',
+            url: 'https://m.toutiao.com/list/?tag='+this.$route.params.id+'&ac=wap&count=20&format=json_raw&as=A125A8CEDCF8987&cp=58EC18F948F79E1&min_behot_time='+this.nowTime,
             adapter: jsonpAdapter
         }).then((res) => {
             this.listCon =res.data.data
@@ -78,7 +79,7 @@ export default {
       infinite(done){
         setTimeout(() => {
           axios({
-              url: 'https://m.toutiao.com/i'+this.$route.params.id+'/info/?callback=__jp2',
+              url: 'https://m.toutiao.com/list/?tag='+this.$route.params.id+'&ac=wap&count=20&format=json_raw&as=A125A8CEDCF8987&cp=58EC18F948F79E1&min_behot_time='+this.nowTime,
               adapter: jsonpAdapter
           }).then((res) => {
             this.listCon2 =res.data.data

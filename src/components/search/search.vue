@@ -59,22 +59,19 @@ export default {
     data () {
         return {
             listCon :[],
-            
         };
     },
     methods: {
       getSearch(data) {
-        // 使用 axios获取数据
+        // 使用 axios获取  搜索数据
         axios({
             url: 'https://www.toutiao.com/search_content/?offset='+0+'&format=json&keyword='+data+'&autoload=true&count=20&cur_tab=1',
             adapter: jsonpAdapter
         }).then((res) => {
             this.listCon =res.data.data
-            console.log(res.data.offset)
         });
       },
       show:function(data){
-        //    alert(data);
             this.getSearch(data)
         },
     },
