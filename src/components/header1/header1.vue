@@ -13,7 +13,6 @@
       </ul>
   </div>
 </template>
-
 <script>
 import VTitle from '@/components/title/title'
 export default {
@@ -38,9 +37,7 @@ export default {
   components: {
     VTitle
   },
-
 }
-
 </script>
 <style lang='stylus' scoped>
 .top_menu_bar  
@@ -67,8 +64,4 @@ export default {
             font-size: 14px;
             &.router-link-active
                 color red
-    /* .top_menu_item
-        
-        &.on a
-            color #f85959 */
 </style>

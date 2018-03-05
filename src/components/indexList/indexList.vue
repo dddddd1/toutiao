@@ -63,7 +63,7 @@ export default {
       fetchData() {
         // 使用 axios获取数据
           axios({
-            url: 'https://m.toutiao.com/list/?tag='+this.$route.params.id+'&ac=wap&count=20&format=json_raw&as=A125A8CEDCF8987&cp=58EC18F948F79E1&min_behot_time='+this.nowTime,
+            url:'https://m.toutiao.com/i'+this.$route.params.id+'/info/?callback=__jp2',
             adapter: jsonpAdapter
         }).then((res) => {
             this.listCon =res.data.data
