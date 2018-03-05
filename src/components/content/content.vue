@@ -84,7 +84,7 @@ export default {
     fetchData() {
       // 使用 axios获取数据
         axios({
-          url: 'https://m.toutiao.com/i'+this.$route.params.id+'/info/?_signature=keE0PhAYy4BfirLsWcArSpHhNC&i='+this.$route.params.id,
+          url:'https://m.toutiao.com/i'+this.$route.params.id+'/info/?callback=__jp1',
           adapter: jsonpAdapter
       }).then((res) => {
           this.listCon =res.data.data

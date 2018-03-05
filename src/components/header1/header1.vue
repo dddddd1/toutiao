@@ -48,8 +48,8 @@ export default {
     position: fixed;
     z-index 1
     top: 40px;
+    width: 100%;
     .top_menu_bar_ul
-        width: 100%;
         overflow: hidden;
         overflow-x: auto;
         text-align: center;

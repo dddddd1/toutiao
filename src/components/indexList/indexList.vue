@@ -1,10 +1,9 @@
 <template>
-  <div class="list">
-    
+  <div class="list">  
     <Header></Header>  
     <header1></header1>
     <scroller 
-        style="padding-top:68px;overflow:visible;"
+        style="padding-top:68px;"
         :on-refresh="refresh"
         :on-infinite="infinite"
         ref="myscroller"
@@ -35,7 +34,6 @@
      </scroller>
   </div>
 </template>
-
 <script>
 import axios from 'axios'
 import jsonpAdapter from 'axios-jsonp'
@@ -52,8 +50,7 @@ export default {
     },
     components:{
       Header,
-      header1,
-      
+      header1
     },
     watch: {
       // 如果路由有变化，会再次执行该方法
@@ -106,10 +103,10 @@ export default {
   ul
     overflow hidden
     li
-     margin 0px 10px
-     padding 14px 0px
-     border-1px(#999)
-     overflow hidden
+      margin 0px 10px
+      padding 14px 0px
+      border-1px(#999)
+      overflow hidden
     .item_detail
       &.desc
         width 67%

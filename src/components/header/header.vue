@@ -15,12 +15,15 @@
      </button>
    </div>
    <div class="mint-header-button is-right">
-    <button data-v-70fccefc="" class="mint-button right mint-button--default mint-button--normal">
-     <!----> <label class="mint-button-text"><img data-v-70fccefc="" src="https://s3.pstatp.com/growth/mobile_list/image/feed_ic_search_normal@3x_0f198e56.png" alt="" /></label></button>
+        <router-link
+              :to=" {path:'/search'} "
+              >
+            <button data-v-70fccefc="" class="mint-button right mint-button--default mint-button--normal">
+            <!----> <label class="mint-button-text"><img data-v-70fccefc="" src="https://s3.pstatp.com/growth/mobile_list/image/feed_ic_search_normal@3x_0f198e56.png" alt="" /></label></button>
+        </router-link>
    </div>
   </header>
 </template>
-
 <script>
 export default {
   data() {
@@ -29,7 +32,6 @@ export default {
 };
 </script>
 <style lang='stylus' scoped>
-
     .header
         width: 100%;
         position: fixed;
